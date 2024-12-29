@@ -36,12 +36,9 @@ todayDiv.innerHTML += `<p>${utc.substring(17, 22)} Uhr</p>`;
 const backThen = new Date(0);
 const today = new Date();
 
-const fnsDiv = document.querySelector("#fns");
+const fnsDiv = document.querySelector("#fns") as HTMLDivElement;
 
 import { differenceInYears, differenceInHours, differenceInSeconds, format } from "date-fns";
-import { de } from 'date-fns/locale'
-const { setDefaultOptions } = require("date-fns");
-setDefaultOptions({ locale: de })
 
 const differenceYears = differenceInYears(today, backThen);
 console.log(differenceYears);
@@ -53,10 +50,10 @@ console.log(differenceSeconds);
 const myBirthday = new Date("6/7/1997");
 
 const ageNow = differenceInYears(today, myBirthday);
-console.log(`I am ${ageNow} years old`);
+fnsDiv.innerHTML += `<p>I am ${ageNow} years old</p>`;
 
 const ageBackThen = differenceInYears(new Date("4/7/2007"), myBirthday)
-console.log(`I was ${ageBackThen} years old in 2007`);
+fnsDiv.innerHTML += `<p>I was ${ageBackThen} years old in 2007</p>`;
 
 console.log(format(myBirthday, "dd.MM.yyyy hh:mm:ss"));
 console.log(format(myBirthday, "dd.MM.yyyy hh:mm"));
