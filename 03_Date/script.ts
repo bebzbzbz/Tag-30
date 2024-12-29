@@ -38,7 +38,10 @@ const today = new Date();
 
 const fnsDiv = document.querySelector("#fns");
 
-import { differenceInYears, differenceInHours, differenceInSeconds } from "date-fns";
+import { differenceInYears, differenceInHours, differenceInSeconds, format } from "date-fns";
+import { de } from 'date-fns/locale'
+const { setDefaultOptions } = require("date-fns");
+setDefaultOptions({ locale: de })
 
 const differenceYears = differenceInYears(today, backThen);
 console.log(differenceYears);
@@ -46,3 +49,20 @@ const differenceHours = differenceInHours(today, backThen);
 console.log(differenceHours);
 const differenceSeconds = differenceInSeconds(today, backThen);
 console.log(differenceSeconds);
+
+const myBirthday = new Date("6/7/1997");
+
+const ageNow = differenceInYears(today, myBirthday);
+console.log(`I am ${ageNow} years old`);
+
+const ageBackThen = differenceInYears(new Date("4/7/2007"), myBirthday)
+console.log(`I was ${ageBackThen} years old in 2007`);
+
+console.log(format(myBirthday, "dd.MM.yyyy hh:mm:ss"));
+console.log(format(myBirthday, "dd.MM.yyyy hh:mm"));
+console.log(format(myBirthday, "dd.MM.yy"));
+console.log(format(myBirthday, "dd. MMMM yyyy"));
+console.log(format(myBirthday, "hh:mm"));
+console.log(format(myBirthday, "EEEE"));
+console.log(format(myBirthday, "MMMM"));
+console.log(format(myBirthday, "d 'des' MMMM 'im Jahre des Herrn' yyyy"));
